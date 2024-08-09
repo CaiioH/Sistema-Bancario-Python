@@ -1,9 +1,3 @@
-# ANOTAÇÕES 
-# - Como é a primeira versão, terá apenas um cliente
-# - Limite de saques diários = 3
-# - 
-
-
 class Banco:
     saldo = 0
     limite = 500
