@@ -9,7 +9,6 @@ class Banco:
         Banco.saldo += v
         Banco.extrato = Banco.extrato + f'\nDepósito =  +R${v:.2f}' 
         
-    
     def sacar(v):
         if v <= Banco.saldo:
             Banco.saldo -= v
@@ -26,12 +25,24 @@ class Banco:
         print(f'\nSaldo: R${Banco.saldo:.2f}')
         print('=================================')
     
+    def nova_conta():
+        pass
+    
+    def listar_contas():
+        pass
+    
+    def novo_usuário():
+        pass    
+    
     def menu():
         print('''\n   >>>> BANCO <<<<
               
     [d] Depositar
     [s] Sacar
     [e] Extrato
+    [nc] Nova conta
+    [lc] Listar contas
+    [nu] Novo Usuário
     [q] Sair      
             ''')
 
@@ -61,6 +72,15 @@ if __name__== '__main__':
         elif opção == 'e':
             Banco.EXTRATO()
             
+        elif opção == 'nc':
+            pass
+        
+        elif opção == 'lc':
+            pass
+        
+        elif opção == 'nu':
+            pass
+                 
         elif opção == 'q':
             print('Obrigado pela preferencia... \nVolte sempre e tenha um ótimo dia!')
             break
