@@ -1,0 +1,35 @@
+[33mcommit 1dd09a790eda840b40f0096d74e5ebf29055c4ca[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mversão2[m[33m, [m[1;31morigin/versão2[m[33m)[m
+Author: CaiioH <caio.rhenrique@hotmail.com>
+Date:   Wed Aug 14 16:52:13 2024 -0300
+
+    Atualização das novas funções e nova estrutura de codigo
+
+[33mcommit 579fcbc28fd679ba6c5a39555bcc352de1d79d61[m
+Author: CaiioH <caio.rhenrique@hotmail.com>
+Date:   Mon Aug 12 13:25:50 2024 -0300
+
+    Add novas opções de menu com novas funçoes
+
+[33mcommit 09d43eef3c9ef655277d8dfc2151524c2ac38750[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: CaiioH <caio.rhenrique@hotmail.com>
+Date:   Fri Aug 9 17:37:50 2024 -0300
+
+    Atualização README.md
+
+[33mcommit c6973ad12901baf6695011931de69a690e23fe81[m
+Author: CaiioH <caio.rhenrique@hotmail.com>
+Date:   Fri Aug 9 17:19:36 2024 -0300
+
+    Atualização do banco.py
+
+[33mcommit 6907e57150e509e84880351fc8c02b2dd33c1e36[m
+Author: CaiioH <caio.rhenrique@hotmail.com>
+Date:   Fri Aug 9 17:17:35 2024 -0300
+
+     Add Arquivo banco.py
+
+[33mcommit 9f41e5546b284187dc502fcc1248695154b67151[m
+Author: Caio <92473882+CaiioH@users.noreply.github.com>
+Date:   Fri Aug 9 12:24:46 2024 -0300
+
+    Initial commit
