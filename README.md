@@ -6,7 +6,7 @@ Uma simulação de um sistema de caixa bancário. Ainda está bem básico, e pre
 
 ## Roadmap
 
-- Melhorar a estrututa do codigo.
+- Melhorar a estrutura do codigo.
 
 - Adicionar mais integrações
 
