@@ -98,7 +98,29 @@ class ContaCorrente(Conta): #Contém os limites de saques da Conta Corrente
             C/C:\t\t{self.numero}
             Titular:\t{self.cliente.nome}
         """ 
-        
+     
+class ContaIterador:
+    def __init__(self, contas):
+        self.contas = contas
+        self.contador = 0
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        try:
+            conta = self.contas[self.contador]
+            self.contador += 1
+            return f"""
+            Agência:\t{conta.agencia}
+            C/C:\t\t{conta.numero}
+            Titular:\t{conta.cliente.nome}
+            Saldo:\t\tR${conta.saldo:.2f}
+        """ 
+        except IndexError:
+            raise StopIteration
+    
+   
 # [CLIENTE]
 class Cliente: # armazena algumas informações sobre o cliente, inclusive as contas criadas. 
     def __init__(self, endereco):
@@ -119,7 +141,7 @@ class PessoaFisica(Cliente): #armazena algumas informações sobre o cliente
         super().__init__(endereco)
       
         
-# [HISTORICO(EXTRATO)]
+# [HISTORICO (EXTRATO)]
 class Historico: #Aqui armazena as informaçoes do extrato
     def __init__(self):
         self._transacoes = [] # simula um banco de dados para armazenar todo o extrato detalhado
@@ -131,6 +153,22 @@ class Historico: #Aqui armazena as informaçoes do extrato
     def adicionar_transacao(self, transacao):# aqui envia todo o conteudo recebido do registro para o banco de dados de extrato 
         self._transacoes.append(transacao)
 
+    # TODO: atualizar as condições do tipo de transações.
+    def gerar_relatorio(self, tipo_transacao=None):
+        if not tipo_transacao:
+            for trans in self._transacoes:
+                yield trans               
+        
+        # elif tipo_transacao == Deposito:
+        #     for trans in self._transacoes:
+        #         yield trans['Depósito']
+        
+        # elif tipo_transacao == Saque:
+        #     for trans in self._transacoes:
+        #         yield trans['Saque'] 
+            
+        pass
+    
 class Transacao(ABC): #aqui define os atributos a serem usados nas classes de Deposito e Saque
     
     @property
@@ -170,8 +208,18 @@ class Saque(Transacao): #Aqui armazena toda as informações do saque efetuado.
         if sucesso_transacao: #aqui envia as informações do extrato
             conta.historico.adicionar_transacao(extrato)        
     
+# [LOG DO CODIGO]
+def log_transação(func): #Serve para mostrar a data e hora de cada função executada no codigo.
+    def envelope(*args, **kwargs):
+        resultado = func(*args, **kwargs)
+        print(f'{datetime.now()}: {func.__name__.upper()}')
+        return resultado    
     
-# [FUNÇÔES Do MENU]
+    return envelope
+    
+
+# [FUNÇÔES DO MENU]
+@log_transação
 def depositar(clientes): # Serve pra efeturar um DEPOSITO no CPF solicitado.
     cpf = input('Informe o CPF (somente número): ')
     usuario = filtrar_usuário(cpf, clientes) #aq executa a funcão do filtro de usuario
@@ -189,7 +237,8 @@ def depositar(clientes): # Serve pra efeturar um DEPOSITO no CPF solicitado.
     transacao = Deposito(valor)
     extrato = f'Depósito \t\t+ R${valor:.2f}'
     usuario.realizar_transacao(conta, transacao, extrato)
-   
+
+@log_transação   
 def sacar(clientes): # Serve pra efeturar um SAQUE no CPF solicitado.
     cpf = input('Informe o CPF (somente número): ')
     usuario = filtrar_usuário(cpf, clientes) #aq executa a funcão do filtro de usuario
@@ -207,7 +256,8 @@ def sacar(clientes): # Serve pra efeturar um SAQUE no CPF solicitado.
     transacao = Saque(valor)
     extrato = f'Saque \t\t\t- R${valor:.2f}'
     usuario.realizar_transacao(conta, transacao, extrato)
-    
+
+@log_transação    
 def EXTRATO(clientes): # Serve pra emitir um EXTRATO do CPF solicitado
     cpf = input('Informe o CPF do usuário: ')
     usuario = filtrar_usuário(cpf, clientes)
@@ -222,16 +272,20 @@ def EXTRATO(clientes): # Serve pra emitir um EXTRATO do CPF solicitado
         return
     
     print('\n=============== EXTRATO ================\n')
+    # TODO: atualizar a implementação para utilizar um filtro escolhido (Saque ou deposito por exemplo).
+    trans = conta.historico.gerar_relatorio()
+
     if conta.historico.transacoes == []:
         print('Não foram realizadas movimentações.')
     else:
-        for transacao in conta.historico.transacoes:
+        for transacao in trans: 
             print('----------------------------------------') 
             print(transacao)
     print('----------------------------------------')
     print(f'\nSaldo: R${conta.saldo:.2f}')
-    print('========================================')
+    print('========================================')   
 
+@log_transação
 def criar_usuário(usuarios): # Serve pra Cadastrar um usuário
     cpf = input('Informe o CPF (somente número): ')
     usuario = filtrar_usuário(cpf, usuarios)
@@ -255,6 +309,7 @@ def criar_usuário(usuarios): # Serve pra Cadastrar um usuário
     usuarios.append(user)
     print('\n——————— USUARIO CADASTRADO COM SUCESSO! ——————— ') 
 
+@log_transação
 def criar_conta(numero_conta, usuarios, contas): # Serve pra criar uma CONTA pra um USUÁRIO com cpf cadastrado
     cpf = input('Informe o CPF do usuário: ')
     usuario = filtrar_usuário(cpf, usuarios)
@@ -269,10 +324,11 @@ def criar_conta(numero_conta, usuarios, contas): # Serve pra criar uma CONTA pra
     print('\n——————— CONTA CRIADA COM SUCESSO! ——————— ')
 
 def listar_contas(contas): # Serve pra Listar todas as contas existentes
+    #Aqui vai chamar o ContaIterador passando "contas" como argumento
     if contas == []:
         print('\n&@⁈ ERRO! Nenhuma conta encontrada &@⁈')
     else:
-        for conta in contas:
+        for conta in ContaIterador(contas):
             print('=' * 50)
             print(textwrap.dedent(str(conta)))
         
@@ -342,4 +398,5 @@ def main():
 main()    
 
 # -- FIM DO PROGRAMA --
+
 
