@@ -1,6 +1,8 @@
 
 # Sistema Bancário em Python
 
+     OBS: Altere a branch para ver as versões antigas e como foi e está sendo o andamento deste projeto !!! 
+
 Uma simulação de um sistema de caixa bancário. Atualmente é possivel criar usuários, criar contas a partir dos usuários cadastrados e fazer depositos e saques ficticios. É possivel listar todas as contas criadas e também emitir o extrato da conta escolhida. Futuramente irei adicionar banco de dados para armazenar as contas e usuários cadastrados.
 Todos as movimentações são separadas por cpf sem que qualquer saque ou deposito interfira no saldo de outra conta que não seja do cpf indicado.
 
@@ -24,7 +26,6 @@ Todos as movimentações são separadas por cpf sem que qualquer saque ou deposi
 - Adicionar novos tipos de contas
 
 - Adicionar banco de dados
-
 
 ## Contribuindo
 
