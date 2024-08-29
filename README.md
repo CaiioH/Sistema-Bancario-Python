@@ -1,7 +1,7 @@
 
 # Sistema Bancário em Python
 
-Uma simulação de um sistema de caixa bancário. Ainda está bem básico, e precisa de muitas melhorias, mas já tem os sistemas de Depósito, Saque e Extrato. Em breve vou adicionar mais funcionalidades com banco de dados, atualmente é usual pra apenas uma conta de usuário e também outros tipos de contas, com cheque especial e coisas do tipo.
+Uma simulação de um sistema de caixa bancário. Nessa versão adicionei a criação de usuários e de contas. É possivel fazer depositos e saques, porém não tem nenhum vinculo com as contas. 
 
 
 ## Roadmap
