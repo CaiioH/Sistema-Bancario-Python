@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema Bancário para gerenciar suas finanças pessoais.">
+    <meta name="keywords" content="sistema bancário, finanças, gerenciamento de contas">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Sistema Bancário</title>
+</head>
+
+<body>
+    <header>
+        <h1>Bem-vindo ao Sistema Bancário</h1>
+    </header>
+
+    <nav class="menu-index">
+        <ul>
+            <li><a href="{% url 'index' %}">Início</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'extrato' %}">Ver extrato</a></li>
+                <li><a href="{% url 'transacao' %}">Transações</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Registrar-se</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main>
+        {% if user.is_authenticated %}
+            <p class="msg">Olá, {{ user.username }}! Você está logado.</p>
+        {% else %}
+            <p class="msg">Você não está logado.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>© 2024 Sistema Bancário</p>
+    </footer>
+</body>
+
+</html>

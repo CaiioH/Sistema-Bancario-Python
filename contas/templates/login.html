@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Faça login para acessar sua conta no sistema bancário.">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+
+    <nav class="menu-login">
+        <ul>
+            <li><a href="{% url 'index' %}">Início</a></li>
+            <li><a href="{% url 'signup' %}">Registrar-se</a></li>
+        </ul>
+    </nav>
+
+    <main class="login">
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+
+        {% for message in messages %}
+        <div class="message">{{ message }}</div>
+        {% endfor %}
+    </main>
+
+    <footer>
+        <p>© 2024 Sistema Bancário</p>
+    </footer>
+</body>
+
+</html>

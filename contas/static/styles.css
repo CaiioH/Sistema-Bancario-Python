@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+*::selection {
+    color: white;
+    background-color: #004080;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 10px 10px 0;
+
+}
+
+.menu a {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    color: #004080;
+    font-weight: bold;
+}
+
+.menu a:hover,
+.menu-index a:hover {
+    transform: scale(1.1);
+    color: #076dd4;
+
+}
+
+.message {
+    margin: 25px 0;
+    color: red;
+}
+
+/* --- HEADER --- */
+header h1 {
+    text-align: center;
+    margin: 40px;
+    color: #004080;
+}
+
+/* --- RODAPÉ --- */
+footer {
+    margin-top: 20px;
+    background-color: #004080;
+    color: white;
+    padding: 20px 4%;
+}
+
+footer p,
+footer a {
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: center;
+    color: white;
+}
+
+/* ------------------ */
+/* ----- INDEX ------ */
+.menu-index {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-index li {
+    margin: 10px;
+    text-align: center;
+}
+
+.menu-index a {
+    color: #004080;
+    font-weight: bold;
+}
+
+.msg {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    font-weight: bold;
+}
+
+/* ---- FIM INDEX --- */
+
+/* ----- SIGNUP ----- */
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.signup-Form {
+    max-width: 500px;
+    border-radius: 10px;
+    background-color: #004080;
+    box-shadow: rgba(0, 0, 0, 0.26) 5px 10px 11px 7px, rgba(0, 0, 0, 0.349) 0px 2px 4px -1px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+}
+
+.signup-Form input {
+    padding: 10px;
+    border: 1px solid #004080;
+    border-radius: 5px;
+}
+
+.signup-Form button {
+    padding: 15px;
+    background-color: #004080;
+    box-shadow: rgba(0, 0, 0, 0.322) 0px 0px 0px 0px, rgb(0, 0, 0) 0px 2px 10px -1px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-Form button:hover {
+    background-color: #0157ad;
+
+}
+
+.signup nav {
+    margin: 40px 0px 10px 0px;
+}
+
+/* --- FIM SIGNUP --- */
+/* ----- LOGIN ----- */
+.menu-login ul {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-login ul li {
+    margin: 0 10px;
+    font-weight: bold;
+    padding: 10px;
+
+}
+
+.menu-login ul li:hover {
+    transform: scale(1.08);
+}
+
+.menu-login ul li a {
+    color: #004080;
+}
+
+.login {
+    margin: 40px;
+    text-align: center;
+}
+
+.login form button {
+    padding: 5px 10px;
+    background-color: #004080;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.login form button:hover {
+    background-color: #0157ad;
+}
+
+
+/* --- FIM LOGIN ---- */
+/* - INDEX USUARIO - */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.container section {
+    display: flex;
+    justify-content: center;
+}
+
+.container #cria-conta {
+    display: flex;
+    justify-content: center;
+}
+
+.container #cria-conta button {
+    padding: 10px;
+}
+
+.container form {
+    background-color: #003366c4;
+    flex-direction: column;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0px 8px 9px rgba(0, 0, 0, 0.514);
+
+}
+
+.container div {
+    display: flex;
+    padding: 5px;
+}
+
+.container label {
+    display: flex;
+    padding: 3px;
+
+}
+
+.container #botao {
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.514);
+    border: 2px solid #00336617;
+
+}
+
+.container button:hover {
+    border: 2px solid #00336600;
+    background-color: rgba(0, 0, 0, 0.397);
+    color: white;
+}
+
+
+
+/* FIM INDEX USUARIO */
+/* - CRIAR NOVA CONTA - */
+.criar-nova-conta nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    gap: 20px;
+}
+
+.criar-nova-conta nav button {
+    padding: 8px 3px;
+    background-color: #004080;
+    border: none;
+    font-size: 15px;
+}
+
+.criar-nova-conta nav button:hover {
+    transform: scale(1.03);
+    background-color: #0157ad;
+}
+
+.criar-nova-conta nav button a {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.criar-nova-conta div {
+    display: flex;
+    justify-content: center;
+}
+
+/* FIM CRIAR NOVA CONTA */
+/* ---- EXTRATO ---- */
+main.extrato {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+main.extrato h2 {
+    text-align: center;
+    color: #004080;
+}
+
+main.extrato table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+main.extrato table thead {
+    background-color: #004080;
+    color: white;
+}
+
+main.extrato table th,
+main.extrato table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+main.extrato table tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+main.extrato table tbody tr:hover {
+    background-color: #e0e8f0;
+}
+
+main.extrato h4 {
+    text-align: right;
+    color: #004080;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+main.extrato p {
+    color: #666;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* -- FIM EXTRATO -- */
