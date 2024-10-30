@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Registrar-se</title>
+</head>
+
+<body>
+    <header>
+        <h1>Registrar-se</h1>
+    </header>
+
+    <!-- Exibir mensagens de erro e sucesso -->
+    <main class="signup">
+        {% for message in messages %}
+        <div class="message">{{ message }}</div>
+        {% endfor %}
+
+
+        <form class="signup-Form" method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Nome de usuário" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="text" name="cpf" placeholder="CPF" required>
+            <input type="text" name="endereco" placeholder="Endereço" required>
+            <input type="date" name="data_nasc" placeholder="Data de Nascimento" required>
+            <button type="submit">Registrar</button>
+        </form>
+
+
+        <nav>
+            <a href="{% url 'login' %}">Já tem uma conta? Faça login aqui.</a>
+            <br>
+        </nav>
+    </main>
+
+    <footer>
+        <a href="{% url 'index' %}">Início</a>
+        <p>© 2024 Sistema Bancário</p>
+    </footer>
+</body>
+
+</html>

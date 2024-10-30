@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do Usuário</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <a href="{% url 'index' %}">Início</a>
+            <a href="{% url 'extrato' %}">Extrato</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+        <h1>Painel do Usuário</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <section>
+                <div class="container-forms">
+                    <form id="cria-conta" method="GET" action="{% url 'criar_conta' %}">
+                        <button type="submit">Criar Nova Conta</button>
+                    </form>
+                    <!-- <h2>Contas Disponíveis</h2> -->
+                    <form method="POST" action="{% url 'transacao' %}">
+                        {% csrf_token %}
+
+                        <div>
+                            <label for="conta_id">Escolha uma conta:</label>
+                            <select id="conta_id" name="conta_id" required>
+                                <option value="">Selecione uma conta</option>
+                                {% for conta in contas %}
+                                <option value="{{ conta.numero_conta }}">{{ conta.numero_conta }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="tipo_transacao">Tipo de Transação:</label>
+                            <select id="tipo_transacao" name="tipo_transacao" required>
+                                <option value="">Selecione a transação</option>
+                                <option value="deposito">Depósito</option>
+                                <option value="saque">Saque</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="valor">Valor:</label>
+                            <input type="number" id="valor" name="valor" step="0.01" required>
+
+                        </div>
+                        <button id="botao" type="submit">Realizar Transação</button>
+                    </form>
+                </div>
+            </section>
+            <!-- Exibir mensagens, se existirem -->
+            {% if messages %}
+            <ul class="msg">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Sistema Bancário</p>
+    </footer>
+</body>
+
+</html>

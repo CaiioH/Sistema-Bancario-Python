@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrato da Conta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Inclua seu CSS aqui -->
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <a href="{% url 'index' %}">Início</a>
+            <a href="{% url 'index_usuario' %}">Painel do Usuário</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+        <h1>Extrato da Conta</h1>
+    </header>
+
+    <main class="extrato">
+
+        <div>
+            <h2>Transações da Conta: {{ conta.numero_conta }}</h2>
+
+            {% if transacoes %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transacao in transacoes %}
+                    <tr>
+                        <td>{{ transacao.data_transacao|date:"d/m/Y H:i" }}</td>
+                        <td>{{ transacao.tipo }}</td>
+                        <td>R$ {{ transacao.valor }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h4>Saldo: R$ {{ conta.saldo }}</h4>
+            {% else %}
+            <p>Não há transações registradas para esta conta.</p>
+            {% endif %}
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Seu Banco. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

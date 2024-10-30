@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Criar Nova Conta Corrente</h1>
+    </header>
+
+    <main class="criar-nova-conta">
+        <nav >
+            <button><a href="{% url 'index' %}">Início</a></button>
+            <button><a href="{% url 'transacao' %}">Voltar</a></button>
+        </nav>
+
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                
+                <label for="saldo_inicial">Saldo Inicial:</label>
+                <input type="number" id="saldo_inicial" name="saldo_inicial" value="0" required>
+    
+                <button type="submit">Criar Conta</button>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2024 Sistema Bancário</p>
+    </footer>
+</body>
+
+</html>
