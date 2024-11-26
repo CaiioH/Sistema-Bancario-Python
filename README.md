@@ -1,7 +1,7 @@
 
 # Sistema Bancário em Python
 
-     Nota: Altere a branch para ver as versões antigas, como foi e está sendo o andamento deste projeto !!! 
+     Nota: Altere a branch para ver as versões antigas e como foi o andamento deste projeto até agora!!! 
 
 Este projeto é uma simulação de um sistema bancário básico desenvolvido em Python com o framework Django. Ele permite criar usuários e contas vinculadas, além de realizar depósitos, saques e emitir extratos detalhados para cada conta. Atualmente, o sistema permite apenas uma conta por usuário, mas há planos futuros para expandir essa funcionalidade.
 
